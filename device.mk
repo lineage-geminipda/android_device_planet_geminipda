@@ -7,7 +7,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := apollo_lite,k15tb_a
+TARGET_OTA_ASSERT_DEVICE := lite,apollo_lite,k15tb_a
 
 PRODUCT_PACKAGES += \
    libmtk_symbols \
