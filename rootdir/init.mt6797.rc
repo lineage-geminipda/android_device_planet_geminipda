@@ -1,8 +1,6 @@
 import init.mt6797.usb.rc
 import init.modem.rc
 
-#import init.mal.rc
-
 on init
     export LD_PRELOAD "libmtk_symbols.so"
 
@@ -595,7 +593,7 @@ service msensord /system/bin/msensord
     class main
     oneshot
 
-service mxg2320d /system/bin/mxg2320d
+service memsicd3416x /system/bin/memsicd3416x
     disabled
     user system
     group system
@@ -652,9 +650,3 @@ service etsd /system/bin/etsd
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user root
-    
-service akmd09912 /system/bin/akmd09912
-    disabled
-    user system
-    group system
-    class main
