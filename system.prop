@@ -25,7 +25,7 @@ ro.audio.silent=0
 persist.af.audio_patch_fm=1
 
 # disable soft keys
-qemu.hw.mainkeys=1
+qemu.hw.mainkeys=0
 
 # Disable dirty region for Mali
 debug.hwui.render_dirty_regions=false
