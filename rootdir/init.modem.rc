@@ -99,22 +99,6 @@ service ril-daemon-mtkmd2 /system/bin/mtkrildmd2
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
     oneshot
-    
-#VIA RILD service
-service viarild /system/bin/viarild -l /system/lib/libviatelecom-withuim-ril.so -- -d /dev/ttySDIO4
-    class core
-    socket rild-via stream 660 radio radio
-    socket msap_c2k_socket1 stream 660 radio radio
-    socket msap_c2k_socket2 stream 660 radio radio
-    socket msap_c2k_socket3 stream 660 radio radio
-    socket msap_c2k_socket4 stream 660 radio radio
-    socket rpc stream 660 radio system
-    socket rild-debug stream 660 radio system
-    socket rild-ctclient stream 660 radio system
-    socket rild-atci-c2k stream 660 radio system
-    group radio cache inet misc audio sdcard_r sdcard_rw log system
-    disabled
-    oneshot
 
 #
 #  Modem related services (Begin)
