@@ -24,7 +24,7 @@ ro.camera.sound.forced=0
 ro.audio.silent=0
 persist.af.audio_patch_fm=1
 
-# disable soft keys
+# enable soft keys
 qemu.hw.mainkeys=0
 
 # Disable dirty region for Mali
