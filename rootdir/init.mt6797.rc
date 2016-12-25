@@ -1,5 +1,6 @@
 import init.mt6797.usb.rc
 import init.modem.rc
+import init.performance.rc
 
 on init
     export LD_PRELOAD "libmtk_symbols.so"
