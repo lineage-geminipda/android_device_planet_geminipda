@@ -15,12 +15,9 @@ on init
     chmod 0660 /dev/kmsg
 
 on charger
-    mkdir /dev/block/platform/mtk-msdc.0/by-name 0755 root system
-    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/logo /dev/block/platform/mtk-msdc.0/by-name/logo
-
-    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/system /system ro wait
+    mount ext4 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/system /system ro wait
     chmod 0666 /dev/kmsg
-    exec /system/bin/setprop sys.usb.config adb
+    write /sys/devices/platform/battery_meter/FG_daemon_log_level 7
     start fuelgauged
     start kpoc_charger
     start servicemanager
@@ -44,11 +41,6 @@ on post-fs
     mkdir /nvdata/md_cmn 0770 system radio
     mkdir /nvdata/media  0770 media audio
     restorecon_recursive /nvdata
-
-    # Workaround for old nvram blobs
-    mkdir /dev/block/platform/mtk-msdc.0/by-name 0755 root system
-    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/nvram /dev/block/platform/mtk-msdc.0/by-name/nvram
-    symlink /dev/block/platform/mtk-msdc.0/11230000.MSDC0/by-name/proinfo /dev/block/platform/mtk-msdc.0/by-name/proinfo
 
     # Wifi
     mknod /dev/wmtWifi c 153 0
@@ -488,13 +480,11 @@ on property:vold.decrypt=trigger_reset_main
 on property:vold.decrypt=trigger_restart_min_framework
     start start_modem
     start msensord
-    start permission_check
 
 on property:vold.decrypt=trigger_restart_framework
     start nvram_daemon
     start start_modem
     start msensord
-    start permission_check
 
 on property:vold.decrypt=trigger_shutdown_framework
     start stop_modem
