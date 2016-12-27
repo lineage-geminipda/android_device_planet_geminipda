@@ -170,24 +170,24 @@ set_speaker_light_locked(struct light_device_t* dev,
     write_int(BLUE_LED_FILE, 0);
 
     if (blink) {
-        if (red) {
+        if (red >= 128) {
             write_int(RED_LED_FILE, 128);
         }
-        if (green) {
+        if (green >= 128) {
             write_int(GREEN_LED_FILE, 128);
         }
-        if (blue) {
+        if (blue >= 128) {
             write_int(BLUE_LED_FILE, 128);
         }
     }
     else {
-        if (red) {
+        if (red >= 128) {
             write_int(RED_LED_FILE, 255);
         }
-        if (green) {
+        if (green >= 128) {
             write_int(GREEN_LED_FILE, 255);
         }
-        if (blue) {
+        if (blue >= 128) {
             write_int(BLUE_LED_FILE, 255);
         }
     }
