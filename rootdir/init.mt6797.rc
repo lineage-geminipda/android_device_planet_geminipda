@@ -433,6 +433,25 @@ on boot
     chown system system /proc/hps/up_threshold
     chmod 0660 /proc/hps/up_threshold
 
+# This is the Processor Power Management
+# Needed for Voltage regulating, temperature compensation (thermal throttling), etc
+    chown system system /proc/ppm/mode
+    chmod 0660 /proc/ppm/mode
+    chown system system /proc/ppm/policy/userlimit_min_cpu_freq
+    chmod 0660 /proc/ppm/policy/userlimit_min_cpu_freq
+    chown system system /proc/ppm/policy/userlimit_max_cpu_freq
+    chmod 0660 /proc/ppm/policy/userlimit_max_cpu_freq
+    chown system system /proc/ppm/policy/userlimit_min_cpu_core
+    chmod 0660 /proc/ppm/policy/userlimit_min_cpu_core
+    chown system system /proc/ppm/policy/userlimit_max_cpu_core
+    chmod 0660 /proc/ppm/policy/userlimit_max_cpu_core
+    chown system system /proc/ppm/dump_cluster_0_dvfs_table
+    chmod 0440 /proc/ppm/dump_cluster_0_dvfs_table
+    chown system system /proc/ppm/dump_cluster_1_dvfs_table
+    chmod 0440 /proc/ppm/dump_cluster_1_dvfs_table
+    chown system system /proc/ppm/root_cluster
+    chmod 0660 /proc/ppm/root_cluster
+
     # CPU freq
     chown system system /proc/cpufreq/cpufreq_limited_by_hevc
     chmod 0660 /proc/cpufreq/cpufreq_limited_by_hevc
