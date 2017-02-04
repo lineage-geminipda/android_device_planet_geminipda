@@ -512,6 +512,14 @@ service pq /system/bin/pq
     group system graphics
     oneshot
 
+# SPM firmware loader
+# This is a power manager service
+# SPM - Service Power Manager
+service spm_script /system/bin/spm_loader
+    class core
+    user root
+    group root
+
 #
 # MTK Wi-Fi related services (Begin)
 #
