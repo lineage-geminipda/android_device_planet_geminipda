@@ -10,8 +10,9 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_OTA_ASSERT_DEVICE := lite,apollo_lite,k15tb_a
 
 PRODUCT_PACKAGES += \
-   libmtk_symbols \
-   libstlport
+    libmtkshim_log \
+    libmtkshim_audio \
+    libstlport
 
 # Lights
 PRODUCT_PACKAGES += \
