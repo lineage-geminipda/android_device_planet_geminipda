@@ -1,2 +1,8 @@
+# Services
+/system/bin/spm_loader                                          u:object_r:spm_loader_exec:s0
+
+# Hardware nodes
+/dev/spm                                                        u:object_r:spm_device:s0
+
 # Sysfs nodes
-/sys/android_touch/gesture           u:object_r:smartwake_sysfs:s0
+/sys/android_touch/gesture                                      u:object_r:smartwake_sysfs:s0
