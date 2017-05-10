@@ -9,11 +9,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := lite,apollo_lite,k15tb_a
 
-PRODUCT_PACKAGES += \
-    libmtkshim_log \
-    libmtkshim_audio \
-    libstlport
-
 # Lights
 PRODUCT_PACKAGES += \
     lights.mt6797

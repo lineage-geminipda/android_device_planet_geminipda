@@ -60,8 +60,10 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# Linker
-LINKER_FORCED_SHIM_LIBS := /system/lib/liblog.so|libmtkshim_log.so:/system/lib64/liblog.so|libmtkshim_log.so:/system/lib/hw/audio.primary.mt6797.so|libmtkshim_audio.so
+# Include needed symbols
+TARGET_INCLUDE_XLOG_SYMBOLS := true
+TARGET_INCLUDE_AUDIO_SYMBOLS := true
+include vendor/mad/config/symbols.mk
 
 # Display
 TARGET_SCREEN_HEIGHT := 1920
