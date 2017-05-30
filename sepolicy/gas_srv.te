@@ -23,12 +23,9 @@ init_daemon_domain(gas_srv)
 binder_use(gas_srv)
 binder_service(gas_srv)
 binder_call(gas_srv, system_server)
-allow gas_srv           gas_srv_service:service_manager     add;
 
 allow gas_srv           property_socket:sock_file           write;
 allow gas_srv           init:unix_stream_socket             connectto;
-
-allow gas_srv           debugfs:file                        {getattr read write ioctl open};
 
 # For /proc/[pid]/cmdline accessing
 typeattribute           gas_srv                             mlstrustedsubject;
@@ -41,9 +38,3 @@ allow gas_srv           untrusted_app:dir                   search;
 allow gas_srv           untrusted_app:file                  {open read getattr};
 allow gas_srv           mediaserver:dir                     search;
 allow gas_srv           mediaserver:file                    {open read getattr};
-
-# Binder interaction
-allow gas_srv           mtk_perf_service:service_manager    find;
-allow surfaceflinger    gas_srv_service:service_manager     find;
-allow untrusted_app     gas_srv_service:service_manager     find;
-allow platform_app      gas_srv_service:service_manager     find;

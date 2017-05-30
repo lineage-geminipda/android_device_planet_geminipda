@@ -23,9 +23,6 @@ allow guiext-server surfaceflinger:binder call;
 allow guiext-server surfaceflinger:fd use;
 allow guiext-server gpu_device:chr_file { open read write ioctl };
 
-# to be a service
-allow guiext-server guiext-server_service:service_manager add;
-
 # for dump
 allow guiext-server system_server:binder call;
 
