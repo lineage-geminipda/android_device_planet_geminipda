@@ -135,6 +135,13 @@ on post-fs-data
     chmod 0660 /dev/als_ps
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/aal_als
+    chmod 0660 /dev/m_batch_misc
+    chmod 0660 /sys/devices/platform/msensor/driver/cpsopmode
+    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptxy
+    chmod 0660 /sys/devices/platform/msensor/driver/cpsreptz
+    chmod 0660 /sys/devices/platform/gsensor/driver/cpsopmode
+    chmod 0660 /sys/devices/platform/gsensor/driver/cpsrange
+    chmod 0660 /sys/devices/platform/gsensor/driver/cpsbandwidth
 
     chown system system /dev/hwmsensor
     chown system system /dev/msensor
@@ -142,6 +149,7 @@ on post-fs-data
     chown radio system /dev/als_ps
     chown system system /dev/gyroscope
     chown system system /dev/aal_als
+    chown system system /dev/m_batch_misc
 
     chmod 0660 /sys/class/misc/m_acc_misc/accenablenodata
     chmod 0660 /sys/class/misc/m_acc_misc/accactive
@@ -402,6 +410,11 @@ on boot
 
     chown system system /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
     chmod 0660 /sys/devices/system/cpu/cpufreq/hotplug/cpu_num_base
+    chown system system /sys/devices/system/cpu/rq-stats/htasks_thresh
+    chmod 0660 /sys/devices/system/cpu/rq-stats/htasks_thresh
+    chmod 0660 /sys/devices/system/cpu/rq-stats/avg_htasks_ac
+    chown system system /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
+    chmod 0660 /sys/devices/system/cpu/rq-stats/avg_htasks_thresh
     chown root   system /sys/kernel/debug/binder/transaction_log_enable
     chown root   system /sys/kernel/debug/binder/perf_evalue
 
@@ -430,11 +443,23 @@ on boot
     chmod 0660 /proc/hps/down_threshold
     chown system system /proc/hps/up_threshold
     chmod 0660 /proc/hps/up_threshold
+    chown system system /proc/hps/rush_boost_enabled
+    chmod 0660 /proc/hps/rush_boost_enabled
+    chown system system /proc/hps/heavy_task_enabled
+    chmod 0660 /proc/hps/heavy_task_enabled
+    chown system system /proc/hps/heavy_task_enabled_EXT
+    chmod 0660 /proc/hps/heavy_task_enabled_EXT
 
 # This is the Processor Power Management
 # Needed for Voltage regulating, temperature compensation (thermal throttling), etc
     chown system system /proc/ppm/mode
     chmod 0660 /proc/ppm/mode
+    chown system system /proc/ppm/policy/perfserv_min_perf_idx
+    chmod 0440 /proc/ppm/policy/perfserv_min_perf_idx
+    chown system system /proc/ppm/policy/perfserv_max_perf_idx
+    chmod 0440 /proc/ppm/policy/perfserv_max_perf_idx
+    chown system system /proc/ppm/policy/perfserv_perf_idx
+    chmod 0660 /proc/ppm/policy/perfserv_perf_idx
     chown system system /proc/ppm/policy/userlimit_min_cpu_freq
     chmod 0660 /proc/ppm/policy/userlimit_min_cpu_freq
     chown system system /proc/ppm/policy/userlimit_max_cpu_freq
@@ -447,6 +472,8 @@ on boot
     chmod 0440 /proc/ppm/dump_cluster_0_dvfs_table
     chown system system /proc/ppm/dump_cluster_1_dvfs_table
     chmod 0440 /proc/ppm/dump_cluster_1_dvfs_table
+    chown system system /proc/ppm/dump_cluster_2_dvfs_table
+    chmod 0440 /proc/ppm/dump_cluster_2_dvfs_table
     chown system system /proc/ppm/root_cluster
     chmod 0660 /proc/ppm/root_cluster
 
@@ -516,6 +543,32 @@ service start_modem /system/bin/md_ctrl 1
     class main
     disabled
     oneshot
+
+# start ged_srv
+on property:sys.boot_completed=1
+    setprop mtk.cpu.boost.disable 0
+    start ged_srv
+			
+service ged_srv /system/bin/ged_srv
+    class core
+    user system
+    group system
+    disabled
+			
+on property:sys.boot_completed=1
+    start gas_srv
+			
+service gas_srv /system/bin/gas_srv
+    class core
+    user system
+    group system
+    disabled
+
+# GuiExt Server init
+    service guiext-server /system/bin/guiext-server
+    class main
+    user system
+    group system graphics
 
 service nvram_daemon /system/bin/nvram_daemon
     class main
