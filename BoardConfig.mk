@@ -9,8 +9,6 @@ TARGET_BOARD_PLATFORM := mt6797
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_FACTORYIMAGE := true
 
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
 # CPU
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -45,7 +43,7 @@ BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x0000
 TARGET_KERNEL_SOURCE := kernel/vernee/apollo_lite
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-TARGET_KERNEL_CONFIG := k15tb_a_defconfig
+TARGET_KERNEL_CONFIG := mad_val_n1_defconfig
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 MTK_APPENDED_DTB_SUPPORT := yes
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -62,11 +60,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
-
-# Include needed symbols
-TARGET_INCLUDE_XLOG_SYMBOLS := true
-TARGET_INCLUDE_AUDIO_SYMBOLS := true
-include vendor/mad/config/symbols.mk
 
 # Display
 TARGET_SCREEN_HEIGHT := 1920
@@ -101,3 +94,8 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
+
+# Include needed symbols
+TARGET_INCLUDE_XLOG_SYMBOLS := true
+TARGET_INCLUDE_AUDIO_SYMBOLS := true
+include vendor/mad/config/symbols.mk

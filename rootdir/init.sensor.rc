@@ -1,0 +1,79 @@
+on post-fs-data
+    # Sensor
+    chmod 0660 /dev/hwmsensor
+    chmod 0660 /dev/msensor
+    chmod 0660 /dev/gsensor
+    chmod 0660 /dev/als_ps
+    chmod 0660 /dev/gyroscope
+    chown system system /dev/hwmsensor
+    chown system system /dev/msensor
+    chown system system /dev/gsensor
+    chown radio system /dev/als_ps
+    chown system system /dev/gyroscope
+
+    chmod 0660 /sys/class/misc/m_acc_misc/accenablenodata
+    chmod 0660 /sys/class/misc/m_acc_misc/accactive
+    chmod 0660 /sys/class/misc/m_acc_misc/accdelay
+    chmod 0660 /sys/class/misc/m_acc_misc/accbatch
+    chown system system /sys/class/misc/m_acc_misc/accenablenodata
+    chown system system /sys/class/misc/m_acc_misc/accactive
+    chown system system /sys/class/misc/m_acc_misc/accdelay
+    chown system system /sys/class/misc/m_acc_misc/accbatch
+
+    chmod 0660 /sys/class/misc/m_mag_misc/magactive
+    chmod 0660 /sys/class/misc/m_mag_misc/magdelay
+    chmod 0660 /sys/class/misc/m_mag_misc/magbatch
+    chmod 0660 /sys/class/misc/m_mag_misc/magflush
+    chmod 0660 /sys/class/misc/m_mag_misc/magoactive
+    chmod 0660 /sys/class/misc/m_mag_misc/magodelay
+    chmod 0660 /sys/class/misc/m_mag_misc/magobatch
+    chmod 0660 /sys/class/misc/m_mag_misc/magoflush
+    chown system system /sys/class/misc/m_mag_misc/magactive
+    chown system system /sys/class/misc/m_mag_misc/magdelay
+    chown system system /sys/class/misc/m_mag_misc/magbatch
+    chown system system /sys/class/misc/m_mag_misc/magflush
+    chown system system /sys/class/misc/m_mag_misc/magoactive
+    chown system system /sys/class/misc/m_mag_misc/magodelay
+    chown system system /sys/class/misc/m_mag_misc/magobatch
+    chown system system /sys/class/misc/m_mag_misc/magoflush
+
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroenablenodata
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroactive
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyrodelay
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyrobatch
+    chmod 0660 /sys/class/misc/m_gyro_misc/gyroflush
+    chown system system /sys/class/misc/m_gyro_misc/gyroenablenodata
+    chown system system /sys/class/misc/m_gyro_misc/gyroactive
+    chown system system /sys/class/misc/m_gyro_misc/gyrodelay
+    chown system system /sys/class/misc/m_gyro_misc/gyrobatch
+    chown system system /sys/class/misc/m_gyro_misc/gyroflush
+
+    chmod 0660 /sys/class/misc/m_alsps_misc/alsactive
+    chmod 0660 /sys/class/misc/m_alsps_misc/alsdelay
+    chmod 0660 /sys/class/misc/m_alsps_misc/alsbatch
+    chmod 0660 /sys/class/misc/m_alsps_misc/alsflush
+    chmod 0660 /sys/class/misc/m_alsps_misc/psactive
+    chmod 0660 /sys/class/misc/m_alsps_misc/psdelay
+    chmod 0660 /sys/class/misc/m_alsps_misc/psbatch
+    chmod 0660 /sys/class/misc/m_alsps_misc/psflush
+    chown system system /sys/class/misc/m_alsps_misc/alsactive
+    chown system system /sys/class/misc/m_alsps_misc/alsdelay
+    chown system system /sys/class/misc/m_alsps_misc/alsbatch
+    chown system system /sys/class/misc/m_alsps_misc/alsflush
+    chown system system /sys/class/misc/m_alsps_misc/psactive
+    chown system system /sys/class/misc/m_alsps_misc/psdelay
+    chown system system /sys/class/misc/m_alsps_misc/psbatch
+    chown system system /sys/class/misc/m_alsps_misc/psflush
+
+#
+# Services
+#
+service msensord /vendor/bin/msensord
+    class main
+    oneshot
+
+service memsicd3416x /vendor/bin/memsicd3416x
+    disabled
+    user system
+    group system
+    class main

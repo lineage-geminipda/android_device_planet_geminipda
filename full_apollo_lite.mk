@@ -12,7 +12,7 @@ PRODUCT_RELEASE_NAME := apollo_lite
 PRODUCT_DEVICE := apollo_lite
 PRODUCT_NAME := full_apollo_lite
 PRODUCT_BRAND := Vernee
-PRODUCT_MODEL := Apollo_Lite
+PRODUCT_MODEL := Apollo Lite
 PRODUCT_MANUFACTURER := Vernee
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
