@@ -214,6 +214,10 @@ on post-fs-data
     chmod 0660 /dev/esfp0
     chown system system /dev/esfp0
 
+    # Smartwake
+    chown system system /sys/devices/soc/soc:touch@/smartwake_active
+    chown system system /sys/devices/soc/soc:touch@/wakeup_gesture
+
 on boot
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
