@@ -24,10 +24,10 @@ on init
     write /proc/sys/net/core/rmem_max 8388608
 
     # update cpus for cpuset cgroup
-    write /dev/cpuset/foreground/cpus 0-9
-    write /dev/cpuset/foreground/boost/cpus 0-9
-    write /dev/cpuset/background/cpus 0-3
-    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/foreground/cpus 0,2-9
+    write /dev/cpuset/foreground/boost/cpus 0,2-9
+    write /dev/cpuset/background/cpus 0,2-3
+    write /dev/cpuset/system-background/cpus 0,2-7
     write /dev/cpuset/top-app/cpus 0-9
 
 on charger
@@ -275,15 +275,14 @@ on property:vold.decrypt=trigger_reset_main
     start stop_modem
     setprop sys.boot_completed 0
     setprop dev.bootcomplete 0
+    setprop service.nvram_init 0
 
 on property:vold.decrypt=trigger_restart_min_framework
-    setprop service.nvram_init 0
     start nvram_daemon
     start start_modem
     start msensord
 
 on property:vold.decrypt=trigger_restart_framework
-    setprop service.nvram_init 0
     start nvram_daemon
     start start_modem
     start msensord
@@ -292,6 +291,7 @@ on property:vold.decrypt=trigger_shutdown_framework
     start stop_modem
     setprop sys.boot_completed 0
     setprop dev.bootcomplete 0
+    setprop service.nvram_init 0
 
 service stop_modem /vendor/bin/md_ctrl 0
     class main
