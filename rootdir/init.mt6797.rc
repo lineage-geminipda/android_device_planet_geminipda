@@ -56,6 +56,13 @@ on post-fs
     chown system system /protect_s
     chmod 0770 /protect_s
 
+on late-fs
+    # boot time fs tune
+    write /sys/block/mmcblk0/queue/iostats 0
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
+    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/nr_requests 256
+
 on post-fs-data
     chown system system /nvcfg
     chmod 0771 /nvcfg
@@ -270,6 +277,12 @@ on boot
     # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
+
+on property:sys.boot_completed=1
+    # end boot time fs tune
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
+    write /sys/block/mmcblk0/queue/nr_requests 128
+    write /sys/block/mmcblk0/queue/iostats 1
 
 on property:vold.decrypt=trigger_reset_main
     start stop_modem
