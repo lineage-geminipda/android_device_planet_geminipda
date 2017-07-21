@@ -59,6 +59,7 @@ ro.boot.opt_md1_support=1
 # WFD
 wfd.dummy.enable=1
 wfd.iframesize.level=0
+persist.debug.wfd.enable=1
 
 # WMT
 persist.mtk.wcn.combo.chipid=-1
