@@ -322,8 +322,8 @@
 
     <VideoEncoderCap name="hevc" enabled="true"
         minBitRate="64000" maxBitRate="100000000"
-        minFrameWidth="176" maxFrameWidth="3840"
-        minFrameHeight="144" maxFrameHeight="2176"
+        minFrameWidth="160" maxFrameWidth="3840"
+        minFrameHeight="128" maxFrameHeight="2176"
         minFrameRate="15" maxFrameRate="30" />
 
     <AudioEncoderCap name="aac" enabled="true"
