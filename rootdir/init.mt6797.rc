@@ -221,6 +221,10 @@ on post-fs-data
     chmod 0660 /dev/esfp0
     chown system system /dev/esfp0
 
+    # IO Scheduler
+    chown system system /sys/block/mmcblk0/queue/scheduler
+    chmod 0660 /sys/block/mmcblk0/queue/scheduler
+
     # Smartwake
     chown system system /sys/devices/soc/soc:touch@/smartwake_active
     chown system system /sys/devices/soc/soc:touch@/wakeup_gesture
