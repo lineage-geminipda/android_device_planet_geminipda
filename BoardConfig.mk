@@ -98,5 +98,4 @@ BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 # Include needed symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := true
-TARGET_INCLUDE_AUDIO_SYMBOLS := true
 include vendor/mad/config/symbols.mk
