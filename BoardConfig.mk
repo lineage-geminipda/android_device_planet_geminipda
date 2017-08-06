@@ -95,7 +95,3 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
-
-# Include needed symbols
-TARGET_INCLUDE_XLOG_SYMBOLS := true
-include vendor/mad/config/symbols.mk
