@@ -18,6 +18,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml
 
+PRODUCT_PACKAGES += \
+    libxml2
+
 # Media
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
