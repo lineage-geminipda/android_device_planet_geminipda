@@ -1,4 +1,4 @@
-LOCAL_PATH := device/vernee/apollo_lite
+LOCAL_PATH := device/planet/geminipda
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -7,7 +7,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := lite,apollo_lite,k15tb_a
+TARGET_OTA_ASSERT_DEVICE := gemini
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -145,6 +145,9 @@ PRODUCT_PACKAGES += \
     libtinymix \
     libtinyxml
 
+# Recovery allowed devices
+TARGET_OTA_ASSERT_DEVICE := geminipda
+
 PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
     frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
@@ -179,4 +182,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
 
 # Vendor
-$(call inherit-product, vendor/vernee/apollo_lite/apollo_lite-vendor.mk)
+$(call inherit-product, vendor/planet/geminipda/geminipda-vendor.mk)

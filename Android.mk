@@ -1,6 +1,6 @@
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_DEVICE),apollo_lite)
+ifeq ($(TARGET_DEVICE),geminipda)
 
 include $(call all-makefiles-under,$(LOCAL_PATH))
 
