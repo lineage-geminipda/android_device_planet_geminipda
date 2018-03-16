@@ -136,11 +136,8 @@ PRODUCT_PACKAGES += \
 
 # Shim libraries
 PRODUCT_PACKAGES += \
-    libmtkshim_log \
-    libmtkshim_audio \
-    libmtkshim_ui \
-    libmtkshim_omx \
-    libmtkshim_gps
+    libmtkshim_gui \
+    libmtkshim_ifc
 
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \

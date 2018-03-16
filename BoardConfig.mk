@@ -103,6 +103,9 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
+# Linker
+LINKER_FORCED_SHIM_LIBS := /system/vendor/lib64/libgui_ext.so|libmtkshim_gui.so:/system/vendor/bin/thermal|libmtkshim_ifc.so
+
 # Wifi
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 BOARD_HOSTAPD_DRIVER := NL80211
