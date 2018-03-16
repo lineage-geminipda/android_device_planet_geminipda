@@ -64,8 +64,119 @@ PRODUCT_COPY_FILES += \
 # Dalvik/HWUI
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# Common stuff
-$(call inherit-product, vendor/mad/config/common.mk)
+# Shim libraries
+PRODUCT_PACKAGES += \
+    libmtkshim_log \
+    libmtkshim_audio \
+    libmtkshim_ui \
+    libmtkshim_omx \
+    libmtkshim_gps
+
+# Display
+PRODUCT_PACKAGES += \
+    libion
+
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
+
+PRODUCT_PACKAGES += \
+    libcurl
+
+# Include explicitly to work around Facelock issues
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
+
+# Charger
+PRODUCT_PACKAGES += \
+    charger_res_images \
+
+# Sensor Calibration
+PRODUCT_PACKAGES += \
+    libem_sensor_jni
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+
+# Granular Volume Steps
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.vc_call_vol_steps=14 \
+    ro.config.media_vol_steps=30
+
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.camera.autofocus.xml:system/etc/permissions/android.hardware.camera.autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.compass.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.xml:system/etc/permissions/android.hardware.touchscreen.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+
+# Audio
+PRODUCT_PACKAGES += \
+    audio_policy.default \
+    audio.r_submix.default \
+    audio.a2dp.default \
+    audio.usb.default \
+    libtinyalsa \
+    libtinycompress \
+    libtinymix \
+    libtinyxml
+
+PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
+
+# Codecs
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
+
+# Storage
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sys.sdcardfs=true
+
+# Wifi
+PRODUCT_PACKAGES += \
+    lib_driver_cmd_mt66xx \
+    libwpa_client \
+    hostapd \
+    wpa_supplicant
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
+
+# Configs
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/telephony/ecc_list.xml:system/etc/ecc_list.xml \
+    $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
 
 # Vendor
 $(call inherit-product, vendor/vernee/apollo_lite/apollo_lite-vendor.mk)
