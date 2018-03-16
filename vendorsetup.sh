@@ -1,3 +1,3 @@
-add_lunch_combo full_apollo_lite-user
-add_lunch_combo full_apollo_lite-userdebug
-add_lunch_combo full_apollo_lite-eng
+add_lunch_combo lineage_gemini-user
+add_lunch_combo lineage_gemini-userdebug
+add_lunch_combo lineage_gemini-eng

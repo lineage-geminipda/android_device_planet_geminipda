@@ -1,4 +1,4 @@
-LOCAL_PATH := device/vernee/apollo_lite
+LOCAL_PATH := device/planet/gemini
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -7,7 +7,7 @@ PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := lite,apollo_lite,k15tb_a
+TARGET_OTA_ASSERT_DEVICE := gemini
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -179,4 +179,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
 
 # Vendor
-$(call inherit-product, vendor/vernee/apollo_lite/apollo_lite-vendor.mk)
+$(call inherit-product, vendor/planet/gemini/gemini-vendor.mk)
