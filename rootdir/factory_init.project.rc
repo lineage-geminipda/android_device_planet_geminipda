@@ -10,6 +10,11 @@ service akmd8963 /vendor/bin/akmd8963
     user system
     group system
 
+service memsicd3524x /vendor/bin/memsicd3524x
+   disabled
+   user system
+   group system
+
 
 on post-fs
 
@@ -44,7 +49,7 @@ on boot
 
 
 service spm_script /vendor/bin/spm_loader
-    user root
-    group root
+    user system
+    group system
     oneshot
 
