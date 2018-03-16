@@ -130,12 +130,12 @@ PRODUCT_PACKAGES += \
     libem_sensor_jni
 
 # Shim libraries
-PRODUCT_PACKAGES += \
-    libmtkshim_log \
-    libmtkshim_audio \
-    libmtkshim_ui \
-    libmtkshim_omx \
-    libmtkshim_gps
+#PRODUCT_PACKAGES += \
+#    libmtkshim_log \
+#    libmtkshim_audio \
+#    libmtkshim_ui \
+#    libmtkshim_omx \
+#    libmtkshim_gps
 
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \
