@@ -1,3 +1,3 @@
-add_lunch_combo lineage_gemini-user
-add_lunch_combo lineage_gemini-userdebug
-add_lunch_combo lineage_gemini-eng
+add_lunch_combo lineage_geminipda-user
+add_lunch_combo lineage_geminipda-userdebug
+add_lunch_combo lineage_geminipda-eng

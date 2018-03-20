@@ -1,4 +1,4 @@
-LOCAL_PATH := device/planet/gemini
+LOCAL_PATH := device/planet/geminipda
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -106,7 +106,7 @@ PRODUCT_COPY_FILES += \
 
 
 # Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := gemini
+TARGET_OTA_ASSERT_DEVICE := geminipda
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -163,4 +163,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
 
 # Vendor
-$(call inherit-product, vendor/planet/gemini/gemini-vendor.mk)
+$(call inherit-product, vendor/planet/geminipda/geminipda-vendor.mk)

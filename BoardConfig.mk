@@ -1,5 +1,5 @@
 # mt6797 platform boardconfig
-LOCAL_PATH := device/planet/gemini
+LOCAL_PATH := device/planet/geminipda
 
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1

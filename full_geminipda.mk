@@ -1,11 +1,11 @@
 # Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/planet/gemini/device.mk)
+$(call inherit-product, device/planet/geminipda/device.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := gemini
+PRODUCT_RELEASE_NAME := geminipda
 
-PRODUCT_DEVICE := gemini
-PRODUCT_NAME := full_gemini
+PRODUCT_DEVICE := geminipda
+PRODUCT_NAME := full_geminipda
 PRODUCT_BRAND := Planet
 PRODUCT_MODEL := Gemini PDA
 PRODUCT_MANUFACTURER := Planet
