@@ -55,6 +55,7 @@
 /dev/ttyC2                                                      u:object_r:gps_device:s0
 /dev/ttyGS0                                                     u:object_r:serial_device:s0
 /dev/gps(/.*)?                                                  u:object_r:gps_device:s0
+/dev/mali[0-9]*                                                 u:object_r:gpu_device:s0
 /dev/mali.*                                                     u:object_r:gpu_device:s0
 /dev/mtk_disp.*                                                 u:object_r:graphics_device:s0
 /dev/sw_sync                                                    u:object_r:graphics_device:s0
