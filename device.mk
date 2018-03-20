@@ -130,7 +130,8 @@ PRODUCT_PACKAGES += \
     libem_sensor_jni
 
 # Shim libraries
-#PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
+    libmtkshim_gui
 #    libmtkshim_log \
 #    libmtkshim_audio \
 #    libmtkshim_ui \
