@@ -9,6 +9,7 @@
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect1   /protect_f   ext4   noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc,barrier=1   wait,check,formattable
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/protect2   /protect_s   ext4   noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc,barrier=1   wait,check,formattable
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvdata     /nvdata      ext4   noatime,nosuid,nodev,noauto_da_alloc,discard,barrier=1               wait,check,formattable
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvcfg      /nvcfg       ext4   noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc             wait,check,formattable
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/frp        /persistent  emmc   defaults                                                             defaults
 
 /devices/mtk-msdc.0/11240000.msdc1*  auto      vfat      defaults        voldmanaged=sdcard1:auto,encryptable=userdata
