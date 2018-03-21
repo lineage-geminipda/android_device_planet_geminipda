@@ -435,7 +435,7 @@ on post-fs-data
     # AGPS
     mkdir /data/agps_supl 0771 gps system
 
-    chmod 0666 /dev/exm
+    chmod 0666 /dev/exm0
 
     # Thermal
     mkdir /data/.tp/ 0775 system system
