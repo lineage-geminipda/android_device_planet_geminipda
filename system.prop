@@ -28,6 +28,9 @@ qemu.hw.mainkeys=0
 # LCD density
 ro.sf.lcd_density=480
 
+# TEMP
+ro.radio.noril=1
+
 ro.sf.hwrotation=270
 
 # Mediatek
