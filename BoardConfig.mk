@@ -103,8 +103,6 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 # Seccomp filter
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
-TARGET_INCLUDE_GUI_SYMBOLS := true
-
 # Linker
 LINKER_FORCED_SHIM_LIBS := /system/vendor/lib64/libgui_ext.so|libmtkshim_gui.so
 
