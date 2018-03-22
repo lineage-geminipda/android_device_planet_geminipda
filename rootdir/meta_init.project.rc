@@ -25,7 +25,7 @@ on boot
 
 
 service spm_script /vendor/bin/spm_loader
-    user root
-    group root
+    user system
+    group system
     oneshot
 
