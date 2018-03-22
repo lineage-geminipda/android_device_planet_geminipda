@@ -53,6 +53,8 @@ BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
 TARGET_USES_64_BIT_BINDER := true
 TARGET_IS_64_BIT := true
 BOARD_KERNEL_CMDLINE := bootopt=64S3,32N2,64N2 androidboot.selinux=permissive
+# TEMP
+BOARD_KERNEL_CMDLINE += log_buf_len=4M
 BOARD_KERNEL_BASE := 0x40078000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --base 0x40078000 --pagesize 2048 --kernel_offset 0x00008000 --ramdisk_offset 0x04f88000 --tags_offset 0x03f88000 --board 1517312270
