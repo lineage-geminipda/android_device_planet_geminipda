@@ -18,6 +18,7 @@
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/nvram         /nvram          emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/proinfo       /proinfo        emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/lk            /bootloader     emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/lk2           /bootloader2    emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/para          /misc           emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/boot          /boot           emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/recovery      /recovery       emmc  defaults defaults
@@ -25,3 +26,11 @@
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/expdb         /expdb          emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/secro         /secro          emmc  defaults defaults
 /dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/seccfg        /seccfg         emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/tee1          /tee1           emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/tee2          /tee2           emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/scp1          /scp1           emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/scp2          /scp2           emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md1img        /md1img         emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md1dsp        /md1dsp         emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md1arm7       /md1arm7        emmc  defaults defaults
+/dev/block/platform/mtk-msdc.0/11230000.msdc0/by-name/md3img        /md3img         emmc  defaults defaults
