@@ -178,3 +178,8 @@ service terservice /vendor/bin/terservice
 
 on property:ril.muxreport=1
     start muxreport-daemon
+
+# Disable ril services if noril prop is set
+on property:ro.radio.noril=1
+    stop ril-daemon-mtk
+    stop ril-daemon-mtkmd2
