@@ -109,7 +109,7 @@ BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/sepolicy
 BOARD_SECCOMP_POLICY := $(LOCAL_PATH)/seccomp
 
 # Linker
-LINKER_FORCED_SHIM_LIBS := /system/vendor/lib64/libgui_ext.so|libmtkshim_gui.so
+LINKER_FORCED_SHIM_LIBS := /system/vendor/lib64/libgui_ext.so|libmtkshim_gui.so:/system/vendor/bin/thermal|libmtkshim_ifc.so
 
 # Wifi
 BOARD_WLAN_DEVICE := MediaTek

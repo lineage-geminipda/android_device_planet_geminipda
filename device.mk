@@ -131,7 +131,8 @@ PRODUCT_PACKAGES += \
 
 # Shim libraries
 PRODUCT_PACKAGES += \
-    libmtkshim_gui
+    libmtkshim_gui \
+    libmtkshim_ifc
 
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \
