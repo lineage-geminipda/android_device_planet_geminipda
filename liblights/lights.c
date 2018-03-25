@@ -52,8 +52,8 @@ char const*const BLUE_LED_FILE
 char const*const LCD_FILE
         = "/sys/class/leds/lcd-backlight/brightness";
 
-char const*const BUTTONS_FILE
-        = "/sys/class/leds/button-backlight/brightness";
+char const*const KEYBOARD_FILE
+        = "/proc/aw9120_operation";
 
 /**
  * device methods
@@ -88,6 +88,27 @@ write_int(char const* path, int value)
 }
 
 static int
+write_str(char const* path, char* value)
+{
+    int fd;
+    static int already_warned = 0;
+
+    fd = open(path, O_RDWR);
+    if (fd >= 0) {
+        char buffer[1024];
+        int bytes = snprintf(buffer, sizeof(buffer), "%s\n", value);
+        ssize_t amt = write(fd, buffer, (size_t)bytes);
+        close(fd);
+        return amt == -1 ? -errno : 0;
+    }
+    if (already_warned == 0) {
+        ALOGE("write_str failed to open %s\n", path);
+        already_warned = 1;
+    }
+    return -errno;
+}
+
+static int
 is_lit(struct light_state_t const* state)
 {
     return state->color & 0x00ffffff;
@@ -117,7 +138,7 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-set_light_buttons(struct light_device_t* dev,
+set_light_keyboard(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     if (!dev) {
@@ -126,7 +147,7 @@ set_light_buttons(struct light_device_t* dev,
     int err = 0;
     int on = is_lit(state);
     pthread_mutex_lock(&g_lock);
-    err = write_int(BUTTONS_FILE, on ? 255 : 0);
+    err = write_str(KEYBOARD_FILE, on ? "7 0 0 0" : "0 0 0 0");
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -267,8 +288,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
         set_light = set_light_backlight;
-    else if (0 == strcmp(LIGHT_ID_BUTTONS, name))
-        set_light = set_light_buttons;
+    else if (0 == strcmp(LIGHT_ID_KEYBOARD, name))
+        set_light = set_light_keyboard;
     else if (0 == strcmp(LIGHT_ID_BATTERY, name))
         set_light = set_light_battery;
     else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))

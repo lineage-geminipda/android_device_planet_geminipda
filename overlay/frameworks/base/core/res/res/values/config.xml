@@ -222,4 +222,7 @@
          autodetected from the Configuration. -->
     <bool name="config_showNavigationBar">true</bool>
 
+    <!--  Enable Keyboard backlight settings (Caps lock) -->
+    <integer name="config_keyboardBrightnessSettingDefault">255</integer>
+
 </resources>
