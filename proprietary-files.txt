@@ -63,7 +63,6 @@ vendor/etc/audio_param/VolumeGainMap_AudioParam.xml
 vendor/etc/audio_param/VolumeGainMap_ParamUnitDesc.xml
 vendor/etc/audio_param/Volume_AudioParam.xml
 vendor/etc/audio_param/Volume_ParamUnitDesc.xml
-vendor/etc/audio_policy.conf
 vendor/etc/mtk_omx_core.cfg
 vendor/firmware/pcm_deepidle.bin
 vendor/firmware/pcm_deepidle_by_mp1.bin
@@ -279,7 +278,6 @@ vendor/lib64/libSwJpgCodec.so
 -vendor/lib64/libdpframework.so
 vendor/bin/ged_srv
 vendor/bin/pq
-vendor/lib/egl/egl.cfg
 vendor/lib/egl/libGLES_mali.so
 vendor/lib/hw/gralloc.mt6797.so
 vendor/lib/hw/hwcomposer.mt6797.so
@@ -352,16 +350,10 @@ vendor/lib64/libminiui.so
 vendor/bin/mnld
 vendor/bin/mtk_agpsd
 vendor/bin/wifi2agps
-vendor/etc/agps_profiles_conf2.xml
 vendor/etc/slp_conf
 vendor/lib/hw/gps.mt6797.so
 vendor/lib/libmnl.so
 vendor/lib64/hw/gps.mt6797.so
-
-# Keylayout
-usr/keylayout/ACCDET.kl
-usr/keylayout/AVRCP.kl
-usr/keylayout/mtk-kpd.kl
 
 # Meta Mode
 vendor/bin/meta_tst
@@ -408,13 +400,6 @@ vendor/bin/thermald
 vendor/bin/thermalindicator
 vendor/bin/thermalloadalgod
 vendor/bin/thermal_manager
-vendor/etc/.tp/.ht120.mtc
-vendor/etc/.tp/.thermal_policy_00
-vendor/etc/.tp/.thermal_policy_01
-vendor/etc/.tp/.thermal_policy_02
-vendor/etc/.tp/.thermal_policy_03
-vendor/etc/.tp/thermal.conf
-vendor/etc/.tp/thermal.off.conf
 vendor/etc/perfservapplist.txt
 vendor/etc/perfservscntbl.txt
 vendor/lib/hw/thermal.mt6797.so

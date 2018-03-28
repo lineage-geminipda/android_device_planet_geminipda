@@ -23,7 +23,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
-    $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml
+    $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
+	$(LOCAL_PATH)/configs/audio/audio_policy.conf:/system/vendor/etc/audio_policy.conf
 
 # Charger
 PRODUCT_PACKAGES += \
@@ -64,6 +65,12 @@ PRODUCT_PACKAGES += \
 # Power
 PRODUCT_PACKAGES += \
     power.mt6797
+
+# Keylayouts
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/keylayout/ACCDET.kl:system/usr/keylayout/ACCDET.kl \
+    $(LOCAL_PATH)/configs/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    $(LOCAL_PATH)/configs/keylayout/mtk-kpd.kl:system/usr/keylayout/mtk-kpd.kl
 
 # Keychars
 PRODUCT_COPY_FILES += \
@@ -160,6 +167,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/telephony/ecc_list.xml:system/etc/ecc_list.xml \
     $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
+
+# Thermal
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/.tp/.ht120.mtc:system/vendor/etc/.tp/.ht120.mtc \
+    $(LOCAL_PATH)/configs/.tp/.thermal_policy_00:system/vendor/etc/.tp/.thermal_policy_00 \
+    $(LOCAL_PATH)/configs/.tp/.thermal_policy_01:system/vendor/etc/.tp/.thermal_policy_01 \
+    $(LOCAL_PATH)/configs/.tp/.thermal_policy_02:system/vendor/etc/.tp/.thermal_policy_02 \
+    $(LOCAL_PATH)/configs/.tp/.thermal_policy_03:system/vendor/etc/.tp/.thermal_policy_03 \
+    $(LOCAL_PATH)/configs/.tp/thermal.conf:system/vendor/etc/.tp/thermal.conf \
+    $(LOCAL_PATH)/configs/.tp/thermal.off.conf:system/vendor/etc/.tp/thermal.off.conf
 
 # USB
 PRODUCT_PACKAGES += \
