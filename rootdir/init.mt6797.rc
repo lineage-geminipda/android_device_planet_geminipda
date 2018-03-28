@@ -4,6 +4,9 @@ import init.sensor.rc
 import init.mal.rc
 import init.modem.rc
 
+on early-init
+    mount debugfs debugfs /sys/kernel/debug mode=755
+
 on init
     mkdir /protect_f 0771 system system
     mkdir /protect_s 0771 system system
