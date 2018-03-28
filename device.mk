@@ -65,6 +65,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.mt6797
 
+# Keychars
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/keychars/Generic.kcm:system/usr/keychars/Generic.kcm
+
 # Media
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
