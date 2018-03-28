@@ -395,6 +395,13 @@ vendor/lib64/libnvram_daemon_callback.so
 vendor/lib64/libnvram_platform.so
 vendor/lib64/libnvram_sec.so
 
+# Planet Apps
+-vendor/app/ApplicationBar/ApplicationBar.apk
+-vendor/app/Gemini_Keyboard/Gemini_Keyboard.apk
+-vendor/app/GeminiVoiceAssistant/GeminiVoiceAssistant.apk
+-vendor/app/ledison/ledison.apk
+-vendor/app/notes/notes.apk
+
 # Power / Thermal
 vendor/bin/fuelgauged
 vendor/bin/thermal
