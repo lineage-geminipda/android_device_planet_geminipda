@@ -411,7 +411,6 @@ vendor/etc/.tp/thermal.conf
 vendor/etc/.tp/thermal.off.conf
 vendor/etc/perfservapplist.txt
 vendor/etc/perfservscntbl.txt
-vendor/lib/hw/power.mt6797.so
 vendor/lib/hw/thermal.mt6797.so
 vendor/lib/libfgauge.so
 vendor/lib/libmtcloader.so
@@ -419,7 +418,6 @@ vendor/lib/libmtklimiter.so
 vendor/lib/libperfservice.so
 vendor/lib/libperfservicenative.so
 vendor/lib/libthermalalgo.so
-vendor/lib64/hw/power.mt6797.so
 vendor/lib64/hw/thermal.mt6797.so
 vendor/lib64/libmtklimiter.so
 vendor/lib64/libperfservice.so
