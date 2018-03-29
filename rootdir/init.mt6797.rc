@@ -451,7 +451,7 @@ on boot
 
     chown system system /sys/class/timed_output/vibrator/enable
 
-    echo "7 0 0 0" > /proc/aw9120_operation
+#    echo "7 0 0 0" > /proc/aw9120_operation
 
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
 
