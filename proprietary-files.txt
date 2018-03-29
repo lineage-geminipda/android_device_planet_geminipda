@@ -338,14 +338,6 @@ vendor/lib64/libdrmmtkwhitelist.so
 vendor/lib64/mediadrm/libdrmclearkeyplugin.so
 vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 
-# Factory Mode
-vendor/bin/factory
-vendor/etc/factory.ini
-vendor/lib/libacdk.so
-vendor/lib/libminiui.so
-vendor/lib64/libacdk.so
-vendor/lib64/libminiui.so
-
 # GPS
 vendor/bin/mnld
 vendor/bin/mtk_agpsd
