@@ -385,6 +385,7 @@ vendor/lib64/libnvram_sec.so
 -vendor/app/GeminiVoiceAssistant/GeminiVoiceAssistant.apk
 -vendor/app/ledison/ledison.apk
 -vendor/app/notes/notes.apk
+-vendor/app/GeminiInputDevices/GeminiInputDevices.apk
 
 # Power / Thermal
 vendor/bin/fuelgauged
