@@ -414,13 +414,6 @@ vendor/lib64/libmtklimiter.so
 vendor/lib64/libperfservice.so
 vendor/lib64/libperfservicenative.so
 
-# Security
-vendor/etc/security/cacerts_supl/594f1775.0
-vendor/etc/security/cacerts_supl/848ea856.0
-vendor/etc/security/cacerts_supl/7651b327.0
-vendor/etc/security/cacerts_supl/c542733d.0
-vendor/etc/security/cacerts_supl/f336e3d1.0
-
 # Sensors
 vendor/bin/memsicd3416x
 vendor/bin/memsicd3524x
