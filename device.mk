@@ -24,7 +24,8 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml \
-	$(LOCAL_PATH)/configs/audio/audio_policy.conf:/system/vendor/etc/audio_policy.conf
+	$(LOCAL_PATH)/configs/audio/audio_policy.conf:/system/vendor/etc/audio_policy.conf \
+	$(LOCAL_PATH)/configs/audio/audio_effects.conf:/system/etc/audio_effects.conf
 
 # Charger
 PRODUCT_PACKAGES += \
