@@ -382,8 +382,6 @@ vendor/lib64/libnvram_sec.so
 # Planet Apps
 -vendor/app/ApplicationBar/ApplicationBar.apk
 -vendor/app/Gemini_Keyboard/Gemini_Keyboard.apk
--vendor/app/GeminiVoiceAssistant/GeminiVoiceAssistant.apk
--vendor/app/ledison/ledison.apk
 -vendor/app/notes/notes.apk
 -vendor/app/GeminiInputDevices/GeminiInputDevices.apk
 
