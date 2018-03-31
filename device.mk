@@ -6,48 +6,39 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_AAPT_CONFIG := normal xhdpi xxhdpi
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
-# Recovery allowed devices
-TARGET_OTA_ASSERT_DEVICE := gemini
-
-# Lights
-PRODUCT_PACKAGES += \
-    lights.mt6797
-
 # Audio
+PRODUCT_PACKAGES += \
+    audio_policy.default \
+    audio.r_submix.default \
+    audio.a2dp.default \
+    audio.usb.default \
+    libtinyalsa \
+    libtinycompress \
+    libtinymix \
+    libtinyxml
+
 PRODUCT_COPY_FILES += \
+    frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml:/system/etc/audio_policy_volumes.xml \
+    frameworks/av/services/audiopolicy/config/default_volume_tables.xml:/system/etc/default_volume_tables.xml \
+    frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
+    frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/audio_policy_configuration.xml:system/etc/audio_policy_configuration.xml \
     $(LOCAL_PATH)/configs/audio/a2dp_audio_policy_configuration.xml:/system/etc/a2dp_audio_policy_configuration.xml
 
+# Charger
 PRODUCT_PACKAGES += \
-    libxml2
+    charger_res_images
 
-# Media
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media_codecs.xml:system/etc/media_codecs.xml \
-	$(LOCAL_PATH)/configs/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
-	$(LOCAL_PATH)/configs/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
-	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+# Curl
+PRODUCT_PACKAGES += \
+    libcurl
 
-# Ramdisk
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
-    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
-    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
-    $(LOCAL_PATH)/rootdir/fstab.mt6797:root/fstab.mt6797 \
-    $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
-    $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6797.rc:root/init.mt6797.rc \
-    $(LOCAL_PATH)/rootdir/init.mt6797.usb.rc:root/init.mt6797.usb.rc \
-    $(LOCAL_PATH)/rootdir/init.sensor.rc:root/init.sensor.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
-    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.mt6797.rc:root/ueventd.mt6797.rc
+# Dalvik/HWUI
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-# TWRP
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+# Display
+PRODUCT_PACKAGES += \
+    libion
 
 # Fingerprint
 PRODUCT_PACKAGES += \
@@ -56,55 +47,39 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:system/etc/permissions/android.hardware.fingerprint.xml
 
-# Vulkan
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
-    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
-
-# Dalvik/HWUI
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
-
-# Shim libraries
-PRODUCT_PACKAGES += \
-    libmtkshim_log \
-    libmtkshim_audio \
-    libmtkshim_ui \
-    libmtkshim_omx \
-    libmtkshim_gps
-
-# Display
-PRODUCT_PACKAGES += \
-    libion
-
 # GPS
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/gps/agps_profiles_conf2.xml:system/etc/agps_profiles_conf2.xml
-
-PRODUCT_PACKAGES += \
-    libcurl
-
-# Include explicitly to work around Facelock issues
-PRODUCT_PACKAGES += \
-    libprotobuf-cpp-full
-
-# USB
-PRODUCT_PACKAGES += \
-    com.android.future.usb.accessory
-
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images \
-
-# Sensor Calibration
-PRODUCT_PACKAGES += \
-    libem_sensor_jni
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Granular Volume Steps
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.vc_call_vol_steps=14 \
     ro.config.media_vol_steps=30
+
+# Include explicitly to work around Facelock issues
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full
+
+# libxml
+PRODUCT_PACKAGES += \
+    libxml2
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.mt6797
+
+# Media
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml \
+	$(LOCAL_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
+	$(LOCAL_PATH)/configs/media/media_codecs_mediatek_video.xml:system/etc/media_codecs_mediatek_video.xml \
+	$(LOCAL_PATH)/configs/media/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+	$(LOCAL_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
+
+# Misc
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -132,18 +107,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
-
-# Audio
-PRODUCT_PACKAGES += \
-    audio_policy.default \
-    audio.r_submix.default \
-    audio.a2dp.default \
-    audio.usb.default \
-    libtinyalsa \
-    libtinycompress \
-    libtinymix \
-    libtinyxml
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.level-0.xml:system/etc/permissions/android.hardware.vulkan.level.xml \
+    frameworks/native/data/etc/android.hardware.vulkan.version-1_0_3.xml:system/etc/permissions/android.hardware.vulkan.version.xml
 
 # Recovery allowed devices
 TARGET_OTA_ASSERT_DEVICE := geminipda
@@ -154,15 +120,51 @@ PRODUCT_COPY_FILES += \
     frameworks/av/services/audiopolicy/config/r_submix_audio_policy_configuration.xml:/system/etc/r_submix_audio_policy_configuration.xml \
     frameworks/av/services/audiopolicy/config/usb_audio_policy_configuration.xml:/system/etc/usb_audio_policy_configuration.xml
 
-# Codecs
+# Ramdisk
 PRODUCT_COPY_FILES += \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video_le.xml:system/etc/media_codecs_google_video_le.xml
+    $(LOCAL_PATH)/rootdir/factory_init.connectivity.rc:root/factory_init.connectivity.rc \
+    $(LOCAL_PATH)/rootdir/factory_init.project.rc:root/factory_init.project.rc \
+    $(LOCAL_PATH)/rootdir/factory_init.rc:root/factory_init.rc \
+    $(LOCAL_PATH)/rootdir/fstab.mt6797:root/fstab.mt6797 \
+    $(LOCAL_PATH)/rootdir/init.connectivity.rc:root/init.connectivity.rc \
+    $(LOCAL_PATH)/rootdir/init.modem.rc:root/init.modem.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6797.rc:root/init.mt6797.rc \
+    $(LOCAL_PATH)/rootdir/init.mt6797.usb.rc:root/init.mt6797.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.sensor.rc:root/init.sensor.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.connectivity.rc:root/meta_init.connectivity.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.modem.rc:root/meta_init.modem.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.project.rc:root/meta_init.project.rc \
+    $(LOCAL_PATH)/rootdir/meta_init.rc:root/meta_init.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.mt6797.rc:root/ueventd.mt6797.rc
+
+# Sensor Calibration
+PRODUCT_PACKAGES += \
+    libem_sensor_jni
+
+# Shim libraries
+PRODUCT_PACKAGES += \
+    libmtkshim_log \
+    libmtkshim_audio \
+    libmtkshim_ui \
+    libmtkshim_omx \
+    libmtkshim_gps
 
 # Storage
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sys.sdcardfs=true
+
+# Telephony
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/telephony/ecc_list.xml:system/etc/ecc_list.xml \
+    $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
+
+# TWRP
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/recovery/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+
+# USB
+PRODUCT_PACKAGES += \
+    com.android.future.usb.accessory
 
 # Wifi
 PRODUCT_PACKAGES += \
@@ -175,11 +177,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf
-
-# Configs
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/telephony/ecc_list.xml:system/etc/ecc_list.xml \
-    $(LOCAL_PATH)/configs/telephony/spn-conf.xml:system/etc/spn-conf.xml
 
 # Vendor
 $(call inherit-product, vendor/planet/geminipda/geminipda-vendor.mk)
