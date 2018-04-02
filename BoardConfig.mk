@@ -1,6 +1,9 @@
 # mt6797 platform boardconfig
 LOCAL_PATH := device/planet/geminipda
 
+# Headers
+TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
+
 # Audio
 USE_XML_AUDIO_POLICY_CONF := 1
 
