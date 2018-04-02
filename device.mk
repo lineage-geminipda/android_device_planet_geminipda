@@ -27,6 +27,10 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/audio/audio_policy.conf:/system/vendor/etc/audio_policy.conf \
 	$(LOCAL_PATH)/configs/audio/audio_effects.conf:/system/etc/audio_effects.conf
 
+# Camera
+PRODUCT_PACKAGES += \
+    Snap
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images
