@@ -446,6 +446,7 @@ on post-fs-data
     mkdir /data/.tp/ 0775 system system
 
 on boot
+    echo "7 0 0 0" > /proc/aw9120_operation
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
 
