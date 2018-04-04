@@ -101,7 +101,6 @@ vendor/lib/libMtkOmxVenc.so
 vendor/lib/libmtkshifter.so
 vendor/lib/libmtk_drvb.so
 vendor/lib/libmtk_mmutils.so
-vendor/lib/libn3d3a.so
 vendor/lib/libspeech_enh_lib.so
 vendor/lib/libstagefrighthw.so
 vendor/lib/libvc1dec_sa.ca7.so
@@ -159,7 +158,6 @@ vendor/lib/libcam.vhdr.so
 vendor/lib/libcam1_utils.so
 vendor/lib/libcam3a_imem.so
 vendor/lib/libcam3_app.so
-vendor/lib/libcam3_contextbuilder.so
 vendor/lib/libcam3_hwpipeline.so
 vendor/lib/libcamalgo.so
 vendor/lib/libcamdrv_imem.so
@@ -228,7 +226,6 @@ vendor/lib64/libcam.vhdr.so
 vendor/lib64/libcam1_utils.so
 vendor/lib64/libcam3a_imem.so
 vendor/lib64/libcam3_app.so
-vendor/lib64/libcam3_contextbuilder.so
 vendor/lib64/libcam3_hwpipeline.so
 vendor/lib64/libcamalgo.so
 vendor/lib64/libcamdrv_imem.so
@@ -382,10 +379,10 @@ vendor/lib64/libnvram_platform.so
 vendor/lib64/libnvram_sec.so
 
 # Planet Apps
--vendor/app/ApplicationBar/ApplicationBar.apk
--vendor/app/Gemini_Keyboard/Gemini_Keyboard.apk
--vendor/app/notes/notes.apk
--vendor/app/GeminiInputDevices/GeminiInputDevices.apk
+-app/ApplicationBar/ApplicationBar.apk:app/ApplicationBar/ApplicationBar.apk:PRESIGNED|6df94bbaacd07559a2081eaa4577c38ce2838e60
+-app/Gemini_Keyboard/Gemini_Keyboard.apk:app/Gemini_Keyboard/Gemini_Keyboard.apk:PRESIGNED|2e938062b06176845ca0bd4b1327777f21b3b733
+-app/notes/notes.apk:app/notes/notes.apk:PRESIGNED|1a6825496daf52af8ebf663745a92e6bf514128f
+-app/GeminiInputDevices/GeminiInputDevices.apk:app/GeminiInputDevices/GeminiInputDevices.apk:PRESIGNED|ec2e3ee36e56991a79d60baf779712dea4f29782
 
 # Power / Thermal
 vendor/bin/fuelgauged
