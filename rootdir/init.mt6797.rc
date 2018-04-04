@@ -48,6 +48,12 @@ on post-fs
     # Support legacy paths
     symlink /sdcard /storage/sdcard0
 
+    # change permission for engineer mode
+    chown radio system /proc/freqhopping/dumpregs
+    chown radio system /proc/freqhopping/freqhopping_debug
+    chown radio system /proc/freqhopping/status
+    chown radio system /proc/freqhopping/userdef
+
     chown system system /proc/bootprof
     chmod 0664 /proc/bootprof
     chown root system /proc/mtprof/cputime
@@ -65,14 +71,13 @@ on post-fs
     chmod 0660 /dev/SUBAF
     chown system camera /dev/SUBAF
 
-on late-fs
+on post-fs-data
     # boot time fs tune
     write /sys/block/mmcblk0/queue/iostats 0
     write /sys/block/mmcblk0/queue/iosched/slice_idle 0
     write /sys/block/mmcblk0/queue/read_ahead_kb 2048
     write /sys/block/mmcblk0/queue/nr_requests 256
 
-on post-fs-data
     chown system system /nvcfg
     chmod 0771 /nvcfg
     restorecon_recursive /nvcfg
@@ -112,6 +117,20 @@ on post-fs-data
     mkdir /data/nfc_socket 0771 nfc radio
 
     chmod 666 /dev/mali0
+
+    # Touch Panel
+    chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
+    chown root diag /sys/module/tpd_setting/parameters/tpd_mode
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time0
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time1
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_spl_num
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_pressure_threshold
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_auto_time_interval
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_sample_cnt
+    chown root diag /sys/module/tpd_setting/parameters/tpd_em_asamp
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log
+    chown root diag /sys/module/tpd_debug/parameters/tpd_em_log_to_fs
 
     chmod 0666 /dev/pmem_multimedia
 
@@ -243,9 +262,6 @@ on post-fs-data
 
     # EM eint
     chown root diag /sys/bus/platform/drivers/eint/current_eint
-
-    # Sensors
-    mkdir /data/misc/sensor 0774 system system
 
     # Display
     chmod 0660 /dev/graphics/fb0
@@ -588,6 +604,43 @@ on boot
     chown system system /proc/fliper
     chmod 0664 /proc/fliper
 
+    # perfmgr
+    chown system system /proc/perfmgr/smart/hps_is_heavy
+    chmod 0660 /proc/perfmgr/smart/hps_is_heavy
+    chown system system /proc/perfmgr/smart/hps_check_duration
+    chmod 0660 /proc/perfmgr/smart/hps_check_duration
+    chown system system /proc/perfmgr/smart/hps_check_last_duration
+    chmod 0660 /proc/perfmgr/smart/hps_check_last_duration
+    chown system system /proc/perfmgr/smart/hps_uevent_enable
+    chmod 0660 /proc/perfmgr/smart/hps_uevent_enable
+    chown system system /proc/perfmgr/boost/cpuset_pid
+    chmod 0660 /proc/perfmgr/boost/cpuset_pid
+    chown system system /proc/perfmgr/boost/force_sp
+    chmod 0660 /proc/perfmgr/boost/force_sp
+    chown system system /proc/perfmgr/boost/force_vr
+    chmod 0660 /proc/perfmgr/boost/force_vr
+    chown system system /proc/perfmgr/boost/force_cpuset
+    chmod 0660 /proc/perfmgr/boost/force_cpuset
+
+    #Netlog tool
+    chown root radio /proc/net/vlan/config
+    chmod 0640 /proc/net/vlan/config
+    chown root radio /proc/net/ip6_tables_matches
+    chown root radio /proc/net/ip6_tables_names
+    chown root radio /proc/net/ip6_tables_targets
+    chown root radio /proc/net/arp_tables_targets
+    chown root radio /proc/net/arp_tables_matches
+    chown root radio /proc/net/arp_tables_names
+    chown root radio /proc/net/ip_tables_targets
+    chown root radio /proc/net/ip_tables_matches
+    chown root radio /proc/net/ip_tables_names
+    chown root radio /proc/net/ip_conntrack_expect
+    chown root radio /proc/net/ip_conntrack
+    chown root radio /proc/net/nf_conntrack
+    chown root radio /proc/net/nf_conntrack_expect
+    chown root radio /proc/net/netfilter/nfnetlink_log
+    chown root radio /proc/net/netfilter/nfnetlink_queue
+
     # WMT proc
     chown shell system /proc/driver/wmt_dbg
     chown shell system /proc/driver/wmt_aee
@@ -605,6 +658,10 @@ on boot
     chmod 660 /dev/ttyGS1
     chown system radio /dev/ttyGS1
 
+    # led
+    chown root system /proc/aw9120_operation
+    chmod 0660 /proc/aw9120_operation
+
 on property:sys.boot_completed=1
     # end boot time fs tune
     write /sys/block/mmcblk0/queue/read_ahead_kb 128
@@ -619,12 +676,14 @@ on property:vold.decrypt=trigger_reset_main
 
 on property:vold.decrypt=trigger_restart_min_framework
     start nvram_daemon
+    start sysenv_daemon
     start start_modem
     start msensord
     start permission_check
 
 on property:vold.decrypt=trigger_restart_framework
     start nvram_daemon
+    start sysenv_daemon
     start start_modem
     start msensord
     start permission_check
@@ -674,10 +733,26 @@ service nvram_daemon /vendor/bin/nvram_daemon
     group system
     oneshot
 
+service sysenv_daemon /vendor/bin/sysenv_daemon
+    class main
+    user system
+    group system
+    oneshot
+
 service pq /vendor/bin/pq
     class main
     user system
     group system graphics
+
+service vtservice /vendor/bin/vtservice
+    class main
+    socket soc_vt_tcv dgram 660 radio system
+    socket soc_vt_stk dgram 660 radio system
+    socket soc_vt_svc dgram 660 radio system
+    socket volte_vt stream 660 root system
+    user system
+    group system camera graphics inet net_admin net_raw media sdcard_rw radio sdcard_r media_rw
+    ioprio rt 4
 
 service agpsd /vendor/bin/mtk_agpsd
     class main
@@ -686,6 +761,11 @@ service agpsd /vendor/bin/mtk_agpsd
     socket agpsd3 stream 660 gps inet
     user gps
     group gps radio inet sdcard_r sdcard_rw misc system
+
+service slpd /vendor/bin/slpd
+    class main
+    user gps
+    group gps inet
 
 #
 # sensor service (begin)
@@ -809,10 +889,24 @@ service mc64xxd /vendor/bin/mc64xxd
 # emsvr service (start)
 #
 
+on property:ro.build.type=eng
+    start emsvr
+
+on property:ro.build.type=user
+    start emsvr_user
+
+on property:ro.build.type=userdebug
+    start emsvr_user
+
 service emsvr_user /vendor/bin/em_svr
-    class main
+    disabled
     user system
     group system radio diag net_bt_stack
+
+service emsvr /vendor/bin/em_svr
+    disabled
+    user root
+    group net_bt_stack
 
 #
 # emsvr service (end)
@@ -848,6 +942,12 @@ service fuelgauged /vendor/bin/fuelgauged
     class main
     user root
     group root
+
+service sn /vendor/bin/sn
+    class late_start
+    user system
+    group system sdcard_rw
+    oneshot
 
 # Charger
 service charger /sbin/healthd -c

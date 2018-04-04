@@ -103,6 +103,24 @@ service ril-daemon-mtkmd2 /vendor/bin/mtkrildmd2
     disabled
     oneshot
 
+service ril-proxy /vendor/bin/rilproxy -l mtk-rilproxy.so
+    class core
+    socket rild stream 660 root radio
+    socket rild2 stream 660 root radio
+    socket rild3 stream 660 root radio
+    socket rild4 stream 660 root radio
+    socket rilproxy-atci stream 660 root radio
+    socket rilproxy-mal stream 660 radio system
+    socket sap_uim_socket1 stream 660 bluetooth bluetooth
+    socket sap_uim_socket2 stream 660 bluetooth bluetooth
+    socket sap_uim_socket3 stream 660 bluetooth bluetooth
+    socket sap_uim_socket4 stream 660 bluetooth bluetooth
+    socket embmsd stream 660 radio inet
+    user root
+    group radio cache inet misc audio sdcard_r sdcard_rw log system
+    oneshot
+    disabled
+
 service md_minilog_util /vendor/bin/md_minilog_util
     user radio
     disabled
@@ -123,6 +141,34 @@ service viarild /vendor/bin/viarild -l /vendor/lib/libviatelecom-withuim-ril.so 
     group radio cache inet misc audio sdcard_r sdcard_rw log system
     disabled
     oneshot
+
+service volte_ua /vendor/bin/volte_ua
+    class core
+    socket volte_ua stream 660 root system
+    user root
+    group system log inet radio net_admin root
+    oneshot
+    disabled
+
+service volte_stack /vendor/bin/volte_stack
+    class core
+    socket volte_stack stream 660 root system
+    user root
+    group system log inet radio
+    oneshot
+    disabled
+
+service volte_imcb /vendor/bin/volte_imcb
+    class core
+    socket volte_imsa1 stream 660 root radio
+    socket volte_imsa2 stream 660 root radio
+    socket volte_imsvt1 stream 660 root radio
+    socket volte_imsvt2 stream 660 root radio
+    socket volte_ut stream 660 root radio
+    user root
+    group system log inet radio
+    oneshot
+    disabled
 
 #
 #  Modem related services (Begin)
@@ -189,6 +235,9 @@ service terservice /vendor/bin/terservice
 
 on property:ril.muxreport=1
     start muxreport-daemon
+
+on property:ril.rilproxy=1
+    start ril-proxy
 
 # Disable ril services if noril prop is set
 on property:ro.radio.noril=1
