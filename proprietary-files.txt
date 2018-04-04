@@ -342,6 +342,7 @@ vendor/lib64/mediadrm/libmockdrmcryptoplugin.so
 vendor/bin/mnld
 vendor/bin/mtk_agpsd
 vendor/bin/wifi2agps
+vendor/bin/slpd
 vendor/etc/slp_conf
 vendor/lib/hw/gps.mt6797.so
 vendor/lib/libmnl.so
@@ -351,6 +352,7 @@ vendor/lib64/hw/gps.mt6797.so
 vendor/bin/meta_tst
 
 # Misc
+vendor/bin/sysenv_daemon
 lib/libfs_mgr.so
 lib64/libfs_mgr.so
 vendor/etc/custom.conf
@@ -421,9 +423,17 @@ vendor/bin/ccci_mdinit
 vendor/bin/gsm0710muxd
 vendor/bin/gsm0710muxdmd2
 vendor/bin/md_ctrl
+vendor/bin/mtkmal
 vendor/bin/mtkrild
 vendor/bin/mtkrildmd2
 vendor/bin/muxreport
+vendor/bin/rilproxy
+vendor/bin/terservice
+vendor/bin/viaradiooptions
+vendor/bin/viarild
+vendor/bin/volte_imcb
+vendor/bin/volte_stack
+vendor/bin/volte_ua
 vendor/firmware/catcher_filter_1_ulwctg_n.bin
 vendor/firmware/catcher_filter_3_3g_n.bin
 vendor/firmware/customfilter/catcher_filter_1_ulwctg_n_C2KOnly_Test.bin
@@ -442,8 +452,11 @@ vendor/lib/libmrdump.so
 vendor/lib/libratconfig.so
 vendor/lib/librilmtk.so
 vendor/lib/librilmtkmd2.so
+vendor/lib/libviatelecom-withuim-ril.so
 vendor/lib/mtk-ril.so
 vendor/lib/mtk-rilmd2.so
+vendor/lib/mtk-rilproxy.so
+vendor/lib/volte_imsm.so
 vendor/lib64/libaed.so
 vendor/lib64/libc2kutils.so
 vendor/lib64/libccci_util.so
@@ -453,6 +466,8 @@ vendor/lib64/librilmtk.so
 vendor/lib64/librilmtkmd2.so
 vendor/lib64/mtk-ril.so
 vendor/lib64/mtk-rilmd2.so
+vendor/lib64/mtk-rilproxy.so
+vendor/lib64/volte_imsm.so
 
 # WIFI / BT / FM
 vendor/bin/spm_loader
