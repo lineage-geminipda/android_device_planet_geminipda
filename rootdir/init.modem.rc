@@ -19,13 +19,24 @@ on post-fs-data
     mkdir /data/md3 0770 root system
 
     chown radio radio /sys/kernel/ccci/boot
+    chown radio radio /dev/ccci_fs
+    chown radio radio /dev/ccci_ioctl0
+    chown radio radio /dev/ccci_ioctl1
+    chown radio radio /dev/ccci_ipc_1220_0
+    chown radio radio /dev/ccci_monitor
+    chown media audio /dev/ccci_aud
+    chmod 660 /dev/ccci_aud
 
     # SELinux
     mkdir /data/ccci_cfg 0770 system radio
+    mkdir /data/mdlog 0775 shell system
     restorecon /data/ccci_cfg
     restorecon_recursive /protect_f
     restorecon_recursive /protect_s
 
+    # ignore permission check
+    write /data/ccci_cfg/md_new_ver.1 "flag"
+    chmod 0660 /data/ccci_cfg/md_new_ver.1
     setprop vold.post_fs_data_done 1
 
 service gsm0710muxd /vendor/bin/gsm0710muxd -s /dev/ttyC0 -f 512 -n 8 -m basic
