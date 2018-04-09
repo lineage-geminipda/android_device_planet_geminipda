@@ -1,6 +1,10 @@
 # mt6797 platform boardconfig
 LOCAL_PATH := device/planet/geminipda
 
+# MTK
+MTK_HARDWARE := true 
+BOARD_USES_MTK_HARDWARE := true
+
 # Headers
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
