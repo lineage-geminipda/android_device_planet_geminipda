@@ -342,6 +342,7 @@ vendor/bin/wifi2agps
 vendor/bin/slpd
 vendor/etc/slp_conf
 vendor/lib/hw/gps.mt6797.so
+vendor/lib/libviagpsrpc.so
 vendor/lib/libmnl.so
 vendor/lib64/hw/gps.mt6797.so
 
@@ -420,6 +421,9 @@ vendor/bin/ccci_mdinit
 vendor/bin/gsm0710muxd
 vendor/bin/gsm0710muxdmd2
 vendor/bin/md_ctrl
+vendor/bin/md_monitor
+vendor/bin/md_monitor_ctrl
+vendor/bin/mdlogger
 vendor/bin/mtkmal
 vendor/bin/mtkrild
 vendor/bin/mtkrildmd2
@@ -443,8 +447,10 @@ vendor/firmware/customfilter/catcher_filter_1_ulwctg_n__Default.bin
 vendor/firmware/em_filter_1_ulwctg_n.bin
 vendor/firmware/modem_3_3g_n.img
 vendor/lib/libaed.so
+vendor/lib/libc2kril.so
 vendor/lib/libc2kutils.so
 vendor/lib/libccci_util.so
+vendor/lib/libmdloggerrecycle.so
 vendor/lib/libmrdump.so
 vendor/lib/libratconfig.so
 vendor/lib/librilmtk.so
@@ -457,7 +463,9 @@ vendor/lib/volte_imsm.so
 vendor/lib64/libaed.so
 vendor/lib64/libc2kutils.so
 vendor/lib64/libccci_util.so
+vendor/lib64/libmdloggerrecycle.so
 vendor/lib64/libmrdump.so
+vendor/lib64/libterservice.so
 vendor/lib64/libratconfig.so
 vendor/lib64/librilmtk.so
 vendor/lib64/librilmtkmd2.so

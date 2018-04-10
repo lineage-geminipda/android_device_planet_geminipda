@@ -767,6 +767,11 @@ service slpd /vendor/bin/slpd
     user gps
     group gps inet
 
+service md_monitor /vendor/bin/md_monitor
+    class main
+    user system
+    group system radio sdcard_rw inet sdcard_r media_rw
+
 #
 # sensor service (begin)
 #
