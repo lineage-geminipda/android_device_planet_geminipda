@@ -41,7 +41,7 @@ ro.mediatek.platform=MT6797
 ro.mediatek.version.release=Gemini-7.1-Planet-30012018-V1
 
 # RIL
-ro.telephony.ril_class=MediaTekRIL
+ro.telephony.ril_class=MT6735
 ro.telephony.ril.config=fakeiccid
 persist.radio.multisim.config=ss
 persist.radio.default.sim=0
